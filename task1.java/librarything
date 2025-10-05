@@ -1,0 +1,23 @@
+package college.library;
+
+// base class for stuff in library (can be book, maybe later CDs?)
+public abstract class LibraryThing {
+    private String titleName;
+    private String whoWrote;   // instead of "author"
+    private String secretCode; // ISBN-ish
+
+    public LibraryThing(String t, String w, String c) {
+        titleName = t;
+        whoWrote = w;
+        secretCode = c;
+    }
+
+    public String getTitle() { return titleName; }
+    public String getWriter() { return whoWrote; }
+    public String getCode() { return secretCode; }
+
+    @Override
+    public String toString() {
+        return titleName + " by " + whoWrote + " {" + secretCode + "}";
+    }
+}

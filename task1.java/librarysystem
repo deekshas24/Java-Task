@@ -1,0 +1,39 @@
+package college.library;
+
+import java.util.*;
+
+// manager of all the books
+public class LibrarySystem {
+    private Map<String, TextBook> myLibMap = new HashMap<>(); // quirky var name
+
+    public void add(TextBook bk) {
+        myLibMap.put(bk.getCode(), bk);
+        System.out.println(">> Added: " + bk.getTitle());
+    }
+
+    public boolean borrowBook(String cd) {
+        TextBook tmpBook = myLibMap.get(cd);
+        if (tmpBook != null) {
+            return tmpBook.borrow();
+        }
+        System.out.println("?? No book for code: " + cd);
+        return false;
+    }
+
+    public boolean returnBook(String cd) {
+        TextBook tmpBook = myLibMap.get(cd);
+        if (tmpBook != null) {
+            return tmpBook.giveBack();
+        }
+        System.out.println("?? No book for code: " + cd);
+        return false;
+    }
+
+    public void list() {
+        System.out.println("\n== Library Shelf ==");
+        for (TextBook each : myLibMap.values()) {
+            String status = each.isFree() ? "Free" : "Not Free";
+            System.out.println("* " + each + " --> " + status);
+        }
+    }
+}

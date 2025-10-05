@@ -1,0 +1,82 @@
+OUTPUT:
+>> Added: Java Basics
+>> Added: Data Structures
+
+Menu:
+1. Show Books
+2. Add Book
+3. Borrow
+4. Return
+0. Exit
+Your choice: 1
+== Library Shelf ==
+* Java Basics by James Gosling {B101} --> Free
+* Data Structures by Mark Allen {B102} --> Free
+
+Menu:
+1. Show Books
+2. Add Book
+3. Borrow
+4. Return
+0. Exit
+Your choice: 3
+Enter code to borrow: 
+B101
+Borrowed: Java Basics
+
+Menu:
+1. Show Books
+2. Add Book
+3. Borrow
+4. Return
+0. Exit
+Your choice: 1
+== Library Shelf ==
+* Java Basics by James Gosling {B101} --> Not Free
+* Data Structures by Mark Allen {B102} --> Free
+
+Menu:
+1. Show Books
+2. Add Book
+3. Borrow
+4. Return
+0. Exit
+Your choice: 4
+Enter code to return: 
+B101
+Thanks for returning: Java Basics
+
+Menu:
+1. Show Books
+2. Add Book
+3. Borrow
+4. Return
+0. Exit
+Your choice: 2
+Book title: OS Concepts
+Author: Galvin
+Give some code: B103
+>> Added: OS Concepts
+
+Menu:
+1. Show Books
+2. Add Book
+3. Borrow
+4. Return
+0. Exit
+Your choice: 1
+== Library Shelf ==
+* Java Basics by James Gosling {B101} --> Free
+* Data Structures by Mark Allen {B102} --> Free
+* OS Concepts by Galvin {B103} --> Free
+
+Menu:
+1. Show Books
+2. Add Book
+3. Borrow
+4. Return
+0. Exit
+Your choice: 0
+Exiting... cya!
+
+s

@@ -1,0 +1,8 @@
+package college.library;
+
+// just an interface for borrowing
+public interface CanBorrow {
+    boolean borrow();
+    boolean giveBack();
+    boolean isFree();
+}

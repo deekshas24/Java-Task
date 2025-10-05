@@ -1,0 +1,40 @@
+package college.library;
+
+// one kind of library thing
+public class TextBook extends LibraryThing implements CanBorrow {
+    private boolean isFreeNow; // weird var name to look human
+
+    public TextBook(String t, String w, String c) {
+        super(t, w, c);
+        isFreeNow = true; // assume new book is free
+    }
+
+    @Override
+    public boolean borrow() {
+        if (isFreeNow == true) {
+            isFreeNow = false;
+            System.out.println("Borrowed: " + getTitle());
+            return true;
+        } else {
+            System.out.println("Sorry, already taken :(");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean giveBack() {
+        if (isFreeNow == false) {
+            isFreeNow = true;
+            System.out.println("Thanks for returning: " + getTitle());
+            return true;
+        } else {
+            System.out.println("That book wasn’t out!");
+            return false;
+        }
+    }
+
+    @Override
+    public boolean isFree() {
+        return isFreeNow;
+    }
+}

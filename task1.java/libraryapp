@@ -1,0 +1,55 @@
+package college.library;
+
+import java.util.Scanner;
+
+// very simple console thing
+public class LibraryApp {
+    public static void main(String[] args) {
+        LibrarySystem bookShelf = new LibrarySystem();
+        Scanner inputGuy = new Scanner(System.in);
+
+        // pre-added books
+        bookShelf.add(new TextBook("Java Basics", "James Gosling", "B101"));
+        bookShelf.add(new TextBook("Data Structures", "Mark Allen", "B102"));
+
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Show Books");
+            System.out.println("2. Add Book");
+            System.out.println("3. Borrow");
+            System.out.println("4. Return");
+            System.out.println("0. Exit");
+            System.out.print("Your choice: ");
+
+            int choiceNum = inputGuy.nextInt();
+            inputGuy.nextLine(); // eat enter key
+
+            if (choiceNum == 0) {
+                System.out.println("Exiting... cya!");
+                break;
+            } else if (choiceNum == 1) {
+                bookShelf.list();
+            } else if (choiceNum == 2) {
+                System.out.print("Book title: ");
+                String txt = inputGuy.nextLine();
+                System.out.print("Author: ");
+                String writerName = inputGuy.nextLine();
+                System.out.print("Give some code: ");
+                String codeName = inputGuy.nextLine();
+                bookShelf.add(new TextBook(txt, writerName, codeName));
+            } else if (choiceNum == 3) {
+                System.out.print("Enter code to borrow: ");
+                String cd = inputGuy.nextLine();
+                bookShelf.borrowBook(cd);
+            } else if (choiceNum == 4) {
+                System.out.print("Enter code to return: ");
+                String cd = inputGuy.nextLine();
+                bookShelf.returnBook(cd);
+            } else {
+                System.out.println("?? Wrong option, try again.");
+            }
+        }
+
+        inputGuy.close();
+    }
+}
