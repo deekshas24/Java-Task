@@ -1,0 +1,15 @@
+public class SubmissionWorker extends Thread {
+    private final ExamineeProfile profile;
+    private final String filePath;
+
+    public SubmissionWorker(ExamineeProfile profile, String filePath) {
+        this.profile = profile;
+        this.filePath = filePath;
+    }
+
+    @Override
+    public void run() {
+        FileRecordWriter.appendRecord(profile, filePath);
+        System.out.println("Upload complete for: " + profile.getFullName());
+    }
+}

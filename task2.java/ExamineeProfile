@@ -1,0 +1,29 @@
+package scorefilewriter;
+public class ExamineeProfile {
+    private final String fullName;
+    private final String idNumber;
+    private final int obtainedMarks;
+
+    public ExamineeProfile(String fullName, String idNumber, int obtainedMarks) {
+        this.fullName = fullName;
+        this.idNumber = idNumber;
+        this.obtainedMarks = obtainedMarks;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getIdNumber() {
+        return idNumber;
+    }
+
+    public int getObtainedMarks() {
+        return obtainedMarks;
+    }
+
+    @Override
+    public String toString() {
+        return fullName + "," + idNumber + "," + obtainedMarks;
+    }
+}

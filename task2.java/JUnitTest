@@ -1,0 +1,36 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import java.io.*;
+
+// Test class to verify thread-safe file writing
+public class FileRecordWriterTest {
+
+    @Test
+    public void testConcurrentFileWriting() throws Exception {
+        String testFile = "results_test.csv";
+        new File(testFile).delete(); // start fresh
+
+        // Creating three threads for concurrent writes
+        Thread learnerA = new Thread(() -> FileRecordWriter.appendRecord(new ExamineeProfile("Aman", "201", 80), testFile));
+        Thread learnerB = new Thread(() -> FileRecordWriter.appendRecord(new ExamineeProfile("Priya", "202", 73), testFile));
+        Thread learnerC = new Thread(() -> FileRecordWriter.appendRecord(new ExamineeProfile("Ishaan", "203", 89), testFile));
+
+        // Start all threads
+        learnerA.start();
+        learnerB.start();
+        learnerC.start();
+
+        // Wait for completion
+        learnerA.join();
+        learnerB.join();
+        learnerC.join();
+
+        // Verify that file contains all records
+        BufferedReader reader = new BufferedReader(new FileReader(testFile));
+        long lines = reader.lines().count();
+        reader.close();
+
+        assertTrue(lines >= 3, "All student records should be safely saved to the file.");
+        System.out.println("Test passed: All student records saved successfully.");
+    }
+}

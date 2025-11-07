@@ -1,0 +1,24 @@
+public class StudentExamLogger {
+
+    public static void main(String[] args) throws InterruptedException {
+
+        String filePath = "exam_results.csv";
+
+        // Creating examinee threads
+        Thread entry1 = new SubmissionWorker(new ExamineeProfile("Neha Singh", "S101", 91), filePath);
+        Thread entry2 = new SubmissionWorker(new ExamineeProfile("Rohit Sharma", "S102", 86), filePath);
+        Thread entry3 = new SubmissionWorker(new ExamineeProfile("Kavya Patel", "S103", 77), filePath);
+
+        // Start all submissions simultaneously
+        entry1.start();
+        entry2.start();
+        entry3.start();
+
+        // Wait until all submissions are finished
+        entry1.join();
+        entry2.join();
+        entry3.join();
+
+        System.out.println(" All student records have been saved successfully.");
+    }
+}

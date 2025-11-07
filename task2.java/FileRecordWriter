@@ -1,0 +1,22 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+// Handles saving examinee data safely into a shared file
+public class FileRecordWriter {
+
+    private static final Object lock = new Object(); // synchronization lock
+
+    public static void appendRecord(ExamineeProfile profile, String filePath) {
+        synchronized (lock) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+                writer.write(profile.toString());
+                writer.newLine();
+            } catch (IOException e) {
+                System.err.println("Error saving record for " + profile.getFullName() + ": " + e.getMessage());
+            }
+        }
+    }
+}
+
+
